@@ -33,6 +33,12 @@ const ArticleDetails = () => {
       {selectedArticle && (
         <div className="card mt-5">
           <div className="card-body">
+            <center>
+              <p className="card-text">
+                ArticleId : <strong>{selectedArticle.article_id}</strong>
+              </p>
+            </center>
+            <br></br>
             <p className="card-title">
               <strong>Title :</strong>
               {selectedArticle.title}
@@ -40,9 +46,7 @@ const ArticleDetails = () => {
             <p className="card-text">
               <strong>Author :</strong> {selectedArticle.author}
             </p>
-            <p className="card-text">
-              <strong>ArticleId :</strong> {selectedArticle.article_id}
-            </p>
+
             <p className="card-text">
               <strong>Body :</strong> {selectedArticle.body}
             </p>
@@ -52,18 +56,15 @@ const ArticleDetails = () => {
             <p className="card-text">
               <strong>Votes :</strong> {selectedArticle.votes}
             </p>
-            <p className="card-text">
-              <strong>Comments :</strong> {selectedArticle.comment_count}
-            </p>
+
             <p className="card-text">
               <strong>Created At :</strong> {selectedArticle.created_at}
             </p>
+            <Link to={`/articles/${selectedArticle.article_id}/comments`}>
+              <button>View Comments</button>
+            </Link>
             <center>
-              <Link
-                to="/"
-                className="btn btn-primary"
-                // onClick={() => setSelectedArticle(null)}
-              >
+              <Link to="/" className="btn btn-primary">
                 Back to Articles
               </Link>
             </center>

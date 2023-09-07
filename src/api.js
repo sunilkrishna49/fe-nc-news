@@ -17,3 +17,12 @@ export const fetchArticleById = (articleId) => {
       return article;
     });
 };
+
+export const fetchCommentsByArticleId = (articleId) => {
+  return axios
+    .get(`https://nc-news-rppe.onrender.com/api/articles/${articleId}/comments`)
+    .then(({ data }) => {
+      const { comments } = data;
+      return comments;
+    });
+};
