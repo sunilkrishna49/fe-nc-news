@@ -5,6 +5,15 @@ export const fetchArticles = () => {
     .get("https://nc-news-rppe.onrender.com/api/articles")
     .then(({ data }) => {
       const { articles } = data;
-      console.log(articles);
+      return articles;
+    });
+};
+
+export const fetchArticleById = (articleId) => {
+  return axios
+    .get(`https://nc-news-rppe.onrender.com/api/articles/${articleId}`)
+    .then(({ data }) => {
+      const { article } = data;
+      return article;
     });
 };
