@@ -12,7 +12,6 @@ const ArticleDetails = () => {
   useEffect(() => {
     fetchArticleById(id)
       .then((data) => {
-        console.log(data);
         setSelectedArticle(data);
       })
       .catch((error) => {
@@ -24,15 +23,30 @@ const ArticleDetails = () => {
     const selected = articles.find(
       (article) => article.article_id === articleId
     );
-    console.log(selected);
+
     setSelectedArticle(selected);
   };
 
   return (
     <div>
+      <br></br>
+      <center>
+        <h5>Article Details</h5>
+      </center>
       {selectedArticle && (
-        <div className="card mt-5">
+        <div
+          className="card mt-3"
+          style={{ margin: "30px", border: "2px solid" }}
+        >
           <div className="card-body">
+            <center>
+              <p className="card-text">
+                <u>
+                  ArticleId : <strong>{selectedArticle.article_id}</strong>
+                </u>
+              </p>
+            </center>
+            <br></br>
             <p className="card-title">
               <strong>Title :</strong>
               {selectedArticle.title}
@@ -40,9 +54,7 @@ const ArticleDetails = () => {
             <p className="card-text">
               <strong>Author :</strong> {selectedArticle.author}
             </p>
-            <p className="card-text">
-              <strong>ArticleId :</strong> {selectedArticle.article_id}
-            </p>
+
             <p className="card-text">
               <strong>Body :</strong> {selectedArticle.body}
             </p>
@@ -52,24 +64,22 @@ const ArticleDetails = () => {
             <p className="card-text">
               <strong>Votes :</strong> {selectedArticle.votes}
             </p>
-            <p className="card-text">
-              <strong>Comments :</strong> {selectedArticle.comment_count}
-            </p>
+
             <p className="card-text">
               <strong>Created At :</strong> {selectedArticle.created_at}
             </p>
+            <Link to={`/articles/${selectedArticle.article_id}/comments`}>
+              <button>View Comments</button>
+            </Link>
             <center>
-              <Link
-                to="/"
-                className="btn btn-primary"
-                // onClick={() => setSelectedArticle(null)}
-              >
-                Back to Articles
+              <Link to="/" className="btn btn-primary">
+                Back to All Articles Page
               </Link>
             </center>
           </div>
         </div>
       )}
+      <br></br>
     </div>
   );
 };

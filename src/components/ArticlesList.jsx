@@ -25,8 +25,20 @@ const ArticlesList = () => {
       <div className="row text-center">
         {articles.map((article, index) => {
           return (
-            <div className="col" key={index} style={{ marginBottom: "20px" }}>
-              <div className="card" style={{ width: "18rem" }}>
+            <div
+              className="col"
+              key={index}
+              style={{
+                marginBottom: "20px",
+              }}
+            >
+              <div
+                className="card"
+                style={{
+                  width: "18rem",
+                  border: "1.8px solid",
+                }}
+              >
                 <img
                   src={article.article_img_url}
                   className="card-img-top"
