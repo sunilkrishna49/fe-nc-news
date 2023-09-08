@@ -12,7 +12,6 @@ const ArticleDetails = () => {
   useEffect(() => {
     fetchArticleById(id)
       .then((data) => {
-        console.log(data);
         setSelectedArticle(data);
       })
       .catch((error) => {
@@ -24,18 +23,27 @@ const ArticleDetails = () => {
     const selected = articles.find(
       (article) => article.article_id === articleId
     );
-    console.log(selected);
+
     setSelectedArticle(selected);
   };
 
   return (
     <div>
+      <br></br>
+      <center>
+        <h5>Article Details</h5>
+      </center>
       {selectedArticle && (
-        <div className="card mt-5">
+        <div
+          className="card mt-3"
+          style={{ margin: "30px", border: "2px solid" }}
+        >
           <div className="card-body">
             <center>
               <p className="card-text">
-                ArticleId : <strong>{selectedArticle.article_id}</strong>
+                <u>
+                  ArticleId : <strong>{selectedArticle.article_id}</strong>
+                </u>
               </p>
             </center>
             <br></br>
@@ -65,12 +73,13 @@ const ArticleDetails = () => {
             </Link>
             <center>
               <Link to="/" className="btn btn-primary">
-                Back to Articles
+                Back to All Articles Page
               </Link>
             </center>
           </div>
         </div>
       )}
+      <br></br>
     </div>
   );
 };
